@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4 offset-md-2 text-center">
+        <div class="col-md-4  text-center">
             <img src="/images/user.png" alt="" height="150px" width="150px">
             <a class="btn" 
             href="{{ route('eventList') }}" 
@@ -40,6 +40,13 @@
             <a class="btn"
              href="{{ route('employeeList') }}"  
              style="text-decoration:none;color:black;background-color:rgb(135, 170, 209);">Employee List</a>
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="/images/admin.png" alt="" height="150px" width="150px">
+            <a class="btn"
+             href="{{ route('showEmployeeAndEvent') }}"  
+             {{-- href="/assignEmployee" --}}
+             style="text-decoration:none;color:black;background-color:rgb(135, 170, 209);">Employee Training</a>
         </div>
     </div>
 </div>

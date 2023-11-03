@@ -58,11 +58,18 @@
             <div class="form-group">
               <label>Employee Name</label>
               <input type="text" name="Empname"  class="form-control" required/>
+            
             </div>
             
             <div class="form-group">
               <label>Gender</label>
-              <input type="text" name="Empgender"  class="form-control" >
+              {{-- <input type="text" name="Empgender"  class="form-control" > --}}
+              <input list="browsers" name="Empname"  class="form-control" required/>
+              <datalist id="browsers">
+                <option value="Male">
+                <option value="Female">
+          
+              </datalist>
             </div>
 
             <div class="form-group">
