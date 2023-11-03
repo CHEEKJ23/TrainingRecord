@@ -9,4 +9,10 @@ class trainingEvent extends Model
 {
     use HasFactory;
     protected $fillable=['name', 'trainer','description', 'dateTime', 'location','eveFile'];
+
+    public function employee(){
+
+        return $this->belongsToMany('App\Models\employee');
+
+    }
 }

@@ -10,4 +10,8 @@ class employee extends Model
     use HasFactory;
     protected $fillable=['name', 'gender','age', 'position', 'department','empFile','contactNumber'];
 
+    public function trainingEvent(){
+        return $this->belongsToMany('App\Models\trainingEvent');
+
+    }
 }

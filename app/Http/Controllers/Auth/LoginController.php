@@ -37,4 +37,10 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function authenticated() {
+     
+            return redirect('/home')->with('status','Welcome to Dashboard');
+        
+    }
 }
