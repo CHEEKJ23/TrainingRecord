@@ -42,9 +42,7 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/assignEmployee', function () {
-//     return view('addEmployeeToEvent');
-// });
+
 Route::get('/assignEmployee', [App\Http\Controllers\addEmployeeToTraining::class, 'showEmployeeAndEvent'])->name('showEmployeeAndEvent');
 
 Route::post('/assign-employee-to-event',[App\Http\Controllers\addEmployeeToTraining::class, 'associateEmployeesToEvents'])->name('associateEmployeesToEvents');

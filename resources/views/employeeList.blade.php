@@ -58,7 +58,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Event Details</h4>
+          <h4 class="modal-title">Employee Details</h4>
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         </div>
         <form action="{{ route('addEmployee') }}" method="post" enctype="multipart/form-data"> @csrf
@@ -72,7 +72,7 @@
             <div class="form-group">
               <label>Gender</label>
               {{-- <input type="text" name="Empgender"  class="form-control" > --}}
-              <input list="browsers" name="Empname"  class="form-control" required/>
+              <input list="browsers" name="Empgender"  class="form-control" required/>
               <datalist id="browsers">
                 <option value="Male">
                 <option value="Female">

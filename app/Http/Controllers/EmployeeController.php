@@ -23,8 +23,7 @@ class EmployeeController extends Controller
     public function employeeSearch(){
         $r=request();
         $keyword=$r->keyword;
-        $events = DB::table('employees')
-        // ->where('role_as','=','0')
+        $employees = DB::table('employees')
         ->where('employees.name','like','%'.$keyword.'%')      
         ->latest()
         ->get();
@@ -33,6 +32,7 @@ class EmployeeController extends Controller
 
     public function addEmployee(Request $request)
 {
+    
     $request->validate([
         'Empname' => 'required',
         'Empgender' => 'required',
@@ -46,7 +46,7 @@ class EmployeeController extends Controller
     if ($request->hasFile('Empfile')) {
         $file = $request->file('Empfile');
         $fileName = $file->getClientOriginalName();
-        $file->move(public_path('uploads'), $fileName); // Store the file in the 'public/uploads' directory
+        $file->move(public_path('uploads'), $fileName); 
 
         $employee = employee::create([
             'name' => $request->input('Empname'),
@@ -54,11 +54,11 @@ class EmployeeController extends Controller
             'age' => $request->input('Empage'),
             'position' => $request->input('Empposition'),
             'department' => $request->input('Empdepartment'),
-            'empFile' => 'uploads/' . $fileName, // Store the file path in the 'eveFile' column
+            'empFile' => 'uploads/' . $fileName, 
             'contactNumber' => $request->input('EmpcontactNo'),
         ]);
 
-        return redirect()->route('employeeList')->with('success', 'Event added successfully');
+        return redirect()->route('employeeList')->with('success', 'Employee added successfully');
     }
 
     return redirect()->back()->with('error', 'No file selected for upload.');

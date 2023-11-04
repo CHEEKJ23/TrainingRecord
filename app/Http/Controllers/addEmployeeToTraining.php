@@ -15,7 +15,6 @@ class addEmployeeToTraining extends Controller
     public function showEmployeeAndEvent(){
         $employees=employee::all();
         $trainingEvents=trainingEvent::all();
-        // return view('addEmployeeToEvent',['employees'=>$employees, 'trainingEvents'=>$trainingEvents]);
         return view('addEmployeeToEvent', compact('employees', 'trainingEvents'));
     }
 
@@ -28,10 +27,10 @@ class addEmployeeToTraining extends Controller
         $event = trainingEvent::find($eventId);
 
         if ($event) {
-            $event->employee()->attach($employeeIds);
+            $event->employee()->sync($employeeIds);
         }
     }
 
-    return redirect()->route('eventList')->with('success', 'Employees assigned to events successfully');
+    return back()->with('success', 'Employees assigned to events successfully');
 }
 }

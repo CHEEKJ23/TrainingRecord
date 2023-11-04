@@ -79,7 +79,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Event Description</label>
-                  <input type="text" name="Evdescription"  class="form-control" required/>
+                  <textarea type="text" name="Evdescription"  class="form-control" required ></textarea>
                 </div>
               </div>
 
