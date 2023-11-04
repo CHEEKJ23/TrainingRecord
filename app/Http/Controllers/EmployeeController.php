@@ -67,8 +67,22 @@ class EmployeeController extends Controller
 }
 
 public function deleteEmployee($id){
-    $employee= employee::find($id);
-    $employee->delete();
-    return back();
+    try {
+        $employee = Employee::find($id);
+
+        // Check if the employee is associated with any events
+        if ($employee->trainingEvent->count() > 0) {
+            return redirect()->route('employeeList')->with('error', 'Cannot delete this employee because it is associated with events.');
+        }
+
+        // If no associated events, proceed with deletion
+        $employee->delete();
+        return back()->with('success', 'Employee deleted successfully');
+    } catch (QueryException $e) {
+        // Handle other exceptions if needed
+        return back()->with('error', 'Failed to delete the employee: ' . $e->getMessage());
+    }
 }
+
+
 }

@@ -78,7 +78,7 @@
                                 <a class="dropdown-item" 
                                 href="{{ route('showEmployeeAndEvent') }}"
                                 >
-                                    <i class="fa-sharp fa-solid fa-user"></i>  Add Employee To Event hi
+                                    <i class="fa-sharp fa-solid fa-user"></i>  Add Employee To Event 
                                 </a>
                             </div>
                         </li>

@@ -14,7 +14,7 @@ class EventController extends Controller
 {
     public function showEvent(){
         $events = DB::table('training_events')
-        // ->where('userID','=',Auth::id())
+      
         ->latest()
         ->get();
         return view('eventList')->with('events',$events);
@@ -45,7 +45,7 @@ class EventController extends Controller
     if ($request->hasFile('Evfile')) {
         $file = $request->file('Evfile');
         $fileName = $file->getClientOriginalName();
-        $file->move(public_path('uploads'), $fileName); // Store the file in the 'public/uploads' directory
+        $file->move(public_path('uploads'), $fileName); 
 
         $event = trainingEvent::create([
             'name' => $request->input('Evname'),
@@ -53,7 +53,7 @@ class EventController extends Controller
             'description' => $request->input('Evdescription'),
             'dateTime' => $request->input('Evdate'),
             'location' => $request->input('Evlocation'),
-            'eveFile' => 'uploads/' . $fileName, // Store the file path in the 'eveFile' column
+            'eveFile' => 'uploads/' . $fileName, 
         ]);
 
         return redirect()->route('eventList')->with('success', 'Event added successfully');
@@ -64,10 +64,25 @@ class EventController extends Controller
         
 }
 
+// public function deleteEvent($id){
+//     $event= trainingEvent::find($id);
+//     $event->delete();
+//     return back();
+// }
+
 public function deleteEvent($id){
-    $event= trainingEvent::find($id);
-    $event->delete();
-    return back();
+    try {
+        $event = trainingEvent::find($id);
+
+        if ($event->employee->count() > 0) {
+            return redirect()->route('eventList')->with('error', 'Cannot delete this event because it is associated with employees.');
+        }
+
+        $event->delete();
+        return redirect()->route('eventList')->with('success', 'Event deleted successfully');
+    } catch (QueryException $e) {
+        return redirect()->route('eventList')->with('error', 'Failed to delete the event: ' . $e->getMessage());
+    }
 }
 
 }
