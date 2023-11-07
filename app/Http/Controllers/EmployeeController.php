@@ -68,7 +68,7 @@ class EmployeeController extends Controller
 
 public function deleteEmployee($id){
     try {
-        $employee = Employee::find($id);
+        $employee = employee::find($id);
 
         // Check if the employee is associated with any events
         if ($employee->trainingEvent->count() > 0) {
@@ -84,5 +84,16 @@ public function deleteEmployee($id){
     }
 }
 
+public function showEmployeeDetails($id) {
+    $employee = Employee::find($id);
+
+    if (!$employee) {
+
+    }
+
+    $employee->load('events');
+
+    return view('employeeTrainingRecord', compact('employee'));
+}
 
 }

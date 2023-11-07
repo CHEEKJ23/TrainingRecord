@@ -46,3 +46,7 @@ Auth::routes();
 Route::get('/assignEmployee', [App\Http\Controllers\addEmployeeToTraining::class, 'showEmployeeAndEvent'])->name('showEmployeeAndEvent');
 
 Route::post('/assign-employee-to-event',[App\Http\Controllers\addEmployeeToTraining::class, 'associateEmployeesToEvents'])->name('associateEmployeesToEvents');
+
+Route::get('/employees/{id}', [App\Http\Controllers\EmployeeController::class, 'showEmployeeDetails'])->name('showEmployeeDetails');
+
+Route::get('/generate-pdf/{id}', [App\Http\Controllers\addEmployeeToTraining::class, 'generatePDF'])->name('generatePDF');

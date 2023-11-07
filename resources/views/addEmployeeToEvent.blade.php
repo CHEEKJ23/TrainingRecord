@@ -20,6 +20,14 @@
             </button>
         </div>
     @endif
+    @if(Session::has('info'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <p>The selected employee(s) already have a date & time conflicting event.</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
         </div>
     </div>
     <div class="row">
@@ -36,8 +44,9 @@
         <h3>Select Employee(s):</h3>
         @if(count($employees))
         @foreach ($employees as $employee)
-            <input type="checkbox" name="employee_ids[]" value="{{ $employee->id }}" required>
+            <input type="checkbox" name="employee_ids[]" value="{{ $employee->id }}" >
             {{ $employee->name }}
+       
         @endforeach
         @else
        <p>No employee yet.</p>
@@ -48,7 +57,7 @@
         <h3>Select Event(s):</h3>
         @if(count($trainingEvents))
         @foreach ($trainingEvents as $trainingEvent)
-            <input type="checkbox" name="event_ids[]" value="{{ $trainingEvent->id }}" required>
+            <input type="checkbox" name="event_ids[]" value="{{ $trainingEvent->id }}" >
             {{ $trainingEvent->name }}
         @endforeach
         @else

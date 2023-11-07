@@ -165,6 +165,10 @@
              
                             <td>
                             <a class="btn" href="{{route('deleteEmployee',['id'=>$employee->id])}}" onClick="return confirm('Are you sure you want to delete this user?')"><i class="fa fa-trash"></i> Delete</a>
+                            <a class="btn" 
+                            href="{{route('showEmployeeDetails',['id'=>$employee->id])}}"
+                            >
+                            <i class="fa fa-folder"></i> Open</a>
                             </td>
                         </tr>
                         @endforeach

@@ -14,4 +14,7 @@ class employee extends Model
         return $this->belongsToMany('App\Models\trainingEvent');
 
     }
+    public function events() {
+        return $this->belongsToMany(trainingEvent::class, 'employee_training_event', 'employee_id', 'training_event_id');
+    }
 }
