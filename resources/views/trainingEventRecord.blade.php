@@ -69,6 +69,7 @@
                 <th scope="col" style="border: 1px solid">Position</th>
                 <th scope="col" style="border: 1px solid; width:20%;">Department</th>
                 <th scope="col" style="border: 1px solid">Contact Number</th>
+                <th scope="col" style="border: 1px solid">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -81,6 +82,10 @@
                     <td style="border: 1px solid">{{$employee->position}}</td>
                     <td style="border: 1px solid;">{{$employee->department}}</td>
                     <td style="border: 1px solid;">{{$employee->contactNumber}}</td>
+                    <td style="border: 1px solid;">
+                     
+                        <a class="btn" href="{{ route('deleteEmployeeFromEvent', ['employeeId' => $employee->id, 'eventId' => $event->id]) }}"><i class="fa fa-trash"></i> Delete Employee from Event</a>
+                    </td>
                 </tr>
                 @endforeach
             @else

@@ -52,3 +52,6 @@ Route::get('/employees/{id}', [App\Http\Controllers\EmployeeController::class, '
 Route::get('/generate-pdf/{id}', [App\Http\Controllers\addEmployeeToTraining::class, 'generatePDF'])->name('generatePDF');
 
 Route::get('/events/{id}', [App\Http\Controllers\EventController::class, 'showEventDetails'])->name('showEventDetails');
+
+Route::get('/delete-employee-from-event/{employeeId}/{eventId}', [App\Http\Controllers\addEmployeeToTraining::class, 'deleteEmployeeFromEvent'])->name('deleteEmployeeFromEvent');
+

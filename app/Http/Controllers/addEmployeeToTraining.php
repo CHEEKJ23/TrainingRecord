@@ -9,6 +9,7 @@ use Auth;
 use PDF;
 use App\Models\employee;
 use App\Models\trainingEvent;
+use App\Models\employee_training_event;
 use Illuminate\Support\Facades\Storage;
 
 class addEmployeeToTraining extends Controller
@@ -80,4 +81,14 @@ public function generatePDF($id)
     return $pdf->stream();
 }
 
+public function deleteEmployeeFromEvent($employeeId, $eventId) {
+    $employee = Employee::find($employeeId);
+
+    if ($employee) {
+        $employee->events()->detach($eventId);
+        return back()->with('success', 'Employee removed from event successfully');
+    } else {
+        return back()->with('error', 'Employee not found');
+    }
+}
 }
