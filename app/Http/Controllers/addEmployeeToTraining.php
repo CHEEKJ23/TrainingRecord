@@ -73,7 +73,7 @@ public function generatePDF($id)
     }
 
     // $pdf = PDF::loadView('employeeTrainingRecord', compact('employee'));
-    $pdf = PDF::loadView('employeeTrainingRecord', ['employee' => $employee, 'showButton' => false]);
+    $pdf = PDF::loadView('employeePDF', ['employee' => $employee]);
 
 
     // return $pdf->download('employeeTrainingRecord.pdf');

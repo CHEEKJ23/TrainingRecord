@@ -168,7 +168,7 @@
                             <a class="btn" 
                             href="{{route('showEmployeeDetails',['id'=>$employee->id])}}"
                             >
-                            <i class="fa fa-folder"></i> View Training</a>
+                            <i class="fa fa-folder"></i> View Record</a>
                             </td>
                         </tr>
                         @endforeach

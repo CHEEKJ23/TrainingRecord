@@ -1,5 +1,5 @@
-@extends('home')
-@section('content')
+{{-- @extends('home')
+@section('content') --}}
 
   <div class="container" style="background-color: #fff; margin-top:5%; border-radius:15px;">
     {{-- <div class="row">
@@ -110,13 +110,12 @@
         window.location.href = `/generate-pdf/${employeeId}`;
     });
   </script> --}}
-<script>
+  {{-- <script>
     // Auto-generate PDF and open in a new tab when the page loads
     document.addEventListener('DOMContentLoaded', function () {
         const employeeId = {{ $employee->id }};
         window.open(`/generate-pdf/${employeeId}`, '_blank');
     });
-</script>
+</script> --}}
 
-
-@endsection
+{{-- @endsection --}}
