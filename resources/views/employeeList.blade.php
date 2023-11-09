@@ -139,7 +139,7 @@
                         <th scope="col">Position</th>
                         <th scope="col">Department</th>
                         <th scope="col">Contact Number</th>
-                        <th scope="col">Event Files</th>
+                        <th scope="col">Employee Files</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -168,7 +168,7 @@
                             <a class="btn" 
                             href="{{route('showEmployeeDetails',['id'=>$employee->id])}}"
                             >
-                            <i class="fa fa-folder"></i> Open</a>
+                            <i class="fa fa-folder"></i> View Training</a>
                             </td>
                         </tr>
                         @endforeach
@@ -190,4 +190,6 @@
         </div>
     </div>
 </div>
+<br>
+<br>
 @endsection

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use Auth;
-// use App\Models\employee;
+use App\Models\employee;
 use App\Models\trainingEvent;
 use Illuminate\Support\Facades\Storage;
 
@@ -39,7 +39,7 @@ class EventController extends Controller
         'Evdescription' => 'required',
         'Evdate' => 'required',
         'Evlocation' => 'required',
-        'Evfile' => 'required|file|mimes:pdf,ppt,pptx,doc,docx,jpg,png',
+        'Evfile' => 'required|file|mimes:pdf,ppt,pptx,doc,docx,jpg,png,csv',
     ]);
 
     if ($request->hasFile('Evfile')) {
@@ -83,6 +83,18 @@ public function deleteEvent($id){
     } catch (QueryException $e) {
         return redirect()->route('eventList')->with('error', 'Failed to delete the event: ' . $e->getMessage());
     }
+}
+
+public function showEventDetails($id) {
+    $event = trainingEvent::find($id);
+
+    if (!$event) {
+
+    }
+
+    $event->load('employee');
+
+    return view('trainingEventRecord', compact('event'));
 }
 
 }

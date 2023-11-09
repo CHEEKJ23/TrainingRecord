@@ -1,7 +1,7 @@
-{{-- @extends('home')
-@section('content') --}}
+@extends('home')
+@section('content')
 
-  <div class="container" style="background-color: #fff; margin-top:5%; border-radius:15px;">
+<div class="container" style="background-color: #fff; margin-top:5%; border-radius:15px;">
     {{-- <div class="row">
         <div class="col-md-12">
         @if(Session::has('success'))
@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-md-12 text-center">
             <br>
-            <h2>{{$employee->name}} 's record</h2>
+            <h2>{{$event->name}} 's record</h2>
             <br>
         </div>
     </div>
@@ -36,14 +36,13 @@
     <div class="row">
         <div class="col-md-12">
            
-          <h1>{{ $employee->name }}</h1>
-          <p>Gender: {{ $employee->gender }}</p>
-          <p>Age: {{ $employee->age }}</p>
-          <p>Position: {{ $employee->position }}</p>
-          <p>Department: {{ $employee->department }}</p>
-          <p>Contact Number: {{ $employee->contactNumber }}</p>
+          <h1>{{ $event->name }}</h1>
+          <p>Trainer: {{ $event->trainer }}</p>
+          <p>Description: {{ $event->description }}</p>
+          <p>Date & Time: {{ $event->dateTime }}</p>
+          <p>Location: {{ $event->location }}</p>
             
-          <h2>Associated Events</h2>
+          <h2>Associated Employees</h2>
 
           {{-- @if ($employee->events->count() > 0)
           <ul>
@@ -61,28 +60,27 @@
       @else
           <p>No associated events.</p>
       @endif --}}
-      <table style="border: 1px solid">
+      <table style="border: 1px solid" class="table">
         <thead>
             <tr>
                 <th scope="col" style="border: 1px solid">Name</th>
-                <th scope="col"style="border: 1px solid">Trainer</th>
-                <th scope="col" style="border: 1px solid">Description</th>
-                <th scope="col" style="border: 1px solid">Date and Time</th>
-                <th scope="col" style="border: 1px solid; width:20%;">Location</th>
-                <th scope="col" style="border: 1px solid">Sign</th>
+                <th scope="col"style="border: 1px solid">Gender</th>
+                <th scope="col" style="border: 1px solid">Age</th>
+                <th scope="col" style="border: 1px solid">Position</th>
+                <th scope="col" style="border: 1px solid; width:20%;">Department</th>
+                <th scope="col" style="border: 1px solid">Contact Number</th>
             </tr>
         </thead>
         <tbody>
-            @if ($employee->events->count() > 0)
-            @foreach ($employee->events as $event)
+            @if ($event->employee->count() > 0)
+            @foreach ($event->employee as $employee)
                 <tr>
-                    <td style="border: 1px solid">{{$event->name}}</td>
-                    <td style="border: 1px solid">{{$event->trainer}}</td>
-                    <td style="border: 1px solid">{{$event->description}}</td>
-                    <td style="border: 1px solid">{{$event->dateTime}}</td>
-                    <td style="border: 1px solid;width:20%;">{{$event->location}}</td>
-                    <td style="border: 1px solid"></td>
-                    
+                    <td style="border: 1px solid">{{$employee->name}}</td>
+                    <td style="border: 1px solid">{{$employee->gender}}</td>
+                    <td style="border: 1px solid">{{$employee->age}}</td>
+                    <td style="border: 1px solid">{{$employee->position}}</td>
+                    <td style="border: 1px solid;">{{$employee->department}}</td>
+                    <td style="border: 1px solid;">{{$employee->contactNumber}}</td>
                 </tr>
                 @endforeach
             @else
@@ -103,13 +101,13 @@
 </div>
 <br>
 <br>
-<button id="generate-pdf">Generate PDF</button>
+{{-- <button id="generate-pdf">Generate PDF</button>
 
 <script>
   document.getElementById('generate-pdf').addEventListener('click', function () {
       const employeeId = {{ $employee->id }};
       window.location.href = `/generate-pdf/${employeeId}`;
   });
-</script>
+</script> --}}
 
-{{-- @endsection --}}
+@endsection

@@ -36,7 +36,7 @@
 
     <style>
         body{
-            background-color:#e6eeff;
+            background-color:#f0f2f7;
             max-width: 100%;
             overflow-x: hidden;
         }
@@ -45,7 +45,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #6D7993;">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #e9ebf2;">
             <div class="container">
                 <a class="navbar-brand" href="#">
                     <img src="{{asset('/images/user.png')}}" alt="Logo" width="120">

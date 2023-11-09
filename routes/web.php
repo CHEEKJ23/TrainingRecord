@@ -50,3 +50,5 @@ Route::post('/assign-employee-to-event',[App\Http\Controllers\addEmployeeToTrain
 Route::get('/employees/{id}', [App\Http\Controllers\EmployeeController::class, 'showEmployeeDetails'])->name('showEmployeeDetails');
 
 Route::get('/generate-pdf/{id}', [App\Http\Controllers\addEmployeeToTraining::class, 'generatePDF'])->name('generatePDF');
+
+Route::get('/events/{id}', [App\Http\Controllers\EventController::class, 'showEventDetails'])->name('showEventDetails');

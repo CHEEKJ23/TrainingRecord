@@ -153,7 +153,10 @@
              
                             <td>
                             <a class="btn" href="{{route('deleteEvent',['id'=>$event->id])}}" onClick="return confirm('Are you sure you want to delete this user?')"><i class="fa fa-trash"></i> Delete</a>
-                           
+                            <a class="btn" 
+                            href="{{route('showEventDetails',['id'=>$event->id])}}"
+                            >
+                            <i class="fa fa-folder"></i> View Details</a>
                             </td>
                         </tr>
                         @endforeach
@@ -171,4 +174,5 @@
         </div>
     </div>
 </div>
+<br><br>
 @endsection
