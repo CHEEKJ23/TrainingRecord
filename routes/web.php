@@ -55,3 +55,10 @@ Route::get('/events/{id}', [App\Http\Controllers\EventController::class, 'showEv
 
 Route::get('/delete-employee-from-event/{employeeId}/{eventId}', [App\Http\Controllers\addEmployeeToTraining::class, 'deleteEmployeeFromEvent'])->name('deleteEmployeeFromEvent');
 
+Route::get('/editEventInfo/{id}', [App\Http\Controllers\EventController::class, 'editEventInfo'])->name('editEventInfo');
+
+Route::post('/updateEventInfo',[App\Http\Controllers\EventController::class,'updateEventInfo'])->name('updateEventInfo');
+
+Route::get('/editEmployeeInfo/{id}', [App\Http\Controllers\EmployeeController::class, 'editEmployeeInfo'])->name('editEmployeeInfo');
+
+Route::post('/updateEmployeeInfo',[App\Http\Controllers\EmployeeController::class,'updateEmployeeInfo'])->name('updateEmployeeInfo');

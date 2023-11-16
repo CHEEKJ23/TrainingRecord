@@ -96,4 +96,26 @@ public function showEmployeeDetails($id) {
     return view('employeeTrainingRecord', compact('employee'));
 }
 
+public function editEmployeeInfo($id) {
+    $employees=employee::all()->where('id',$id);
+    // select * from categories where id='$id'
+    // return view('dailyExpense',compact('incomes'))->with($income);
+    return view('editEmployeeInfo')->with('employees',$employees);
+
+}
+
+public function updateEmployeeInfo(){
+    $r=request();//retrive submited form data
+    $employees =employee::find($r->employeeID);  //get the record based on income ID              
+    $employees->name=$r->Empname;
+    $employees->gender=$r->Empgender;
+    $employees->age=$r->Empage;
+    $employees->position=$r->Empposition;
+    $employees->contactNumber=$r->EmpcontactNo;
+    $employees->department=$r->Empdepartment;
+    $employees->empFile=$r->Empfile;
+    $employees->save();
+    return redirect()->route('employeeList');
+}
+
 }

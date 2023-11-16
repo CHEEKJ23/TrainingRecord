@@ -97,4 +97,25 @@ public function showEventDetails($id) {
     return view('trainingEventRecord', compact('event'));
 }
 
+public function editEventInfo($id) {
+    $events=trainingEvent::all()->where('id',$id);
+    // select * from categories where id='$id'
+    // return view('dailyExpense',compact('incomes'))->with($income);
+    return view('editEventInfo')->with('events',$events);
+
+}
+
+public function updateEventInfo(){
+    $r=request();//retrive submited form data
+    $events =trainingEvent::find($r->eventID);  //get the record based on income ID              
+    $events->name=$r->Evname;
+    $events->trainer=$r->Evtrainer;
+    $events->description=$r->Evdescription;
+    $events->dateTime=$r->Evdate;
+    $events->location=$r->Evlocation;
+    $events->eveFile=$r->Evfile;
+    $events->save();
+    return redirect()->route('eventList');
+}
+
 }
