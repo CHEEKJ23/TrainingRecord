@@ -28,6 +28,24 @@
         </div>
     </div> --}} -->
     <div class="row">
+        <div class="col-md-12">
+          
+          @if(Session::has('success'))
+  
+                  <p class="alert
+                  {{ Session::get('alert-class', 'alert-success') }}">{{Session::get('success') }}</p>
+                  
+                  @endif
+  
+                  @if(Session::has('goal'))
+  
+                  <p class="alert
+                  {{ Session::get('alert-class', 'alert-success') }}">{{Session::get('goal') }}</p>
+                  
+                  @endif
+        </div>
+      </div>
+    <div class="row">
         <div class="col-md-12 text-center">
             <br>
             <h2>{{$event->name}} 's record</h2>
@@ -96,7 +114,7 @@
                                 <td style="border: 1px solid;">{{$employee->contactNumber}}</td>
                                 <td style="border: 1px solid;">
                                 
-                                    <a class="btn" href="{{ route('deleteEmployeeFromEvent', ['employeeId' => $employee->id, 'eventId' => $event->id]) }}"><i class="fa fa-trash"></i> Delete Employee from Event</a>
+                                    <a class="btn" href="{{ route('deleteEmployeeFromEvent', ['employeeId' => $employee->id, 'eventId' => $event->id]) }} " onClick="return confirm('Are you sure you want to delete this user?')"><i class="fa fa-trash"></i> Delete Employee from Event</a>
                                 </td>
                             </tr>
                         @endforeach

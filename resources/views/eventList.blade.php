@@ -3,28 +3,24 @@
 
   <div class="container" style="background-color: #fff; margin-top:5%; border-radius:15px;">
     <!-- success  -->
-    <div class="row">
       <div class="row">
         <div class="col-md-12">
+        
           @if(Session::has('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              <p>Event added</p>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-          @endif
-            @if(Session::has('error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <p>Cannot delete this event because it is associated with employees.</p>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-          @endif
+  
+                  <p class="alert
+                  {{ Session::get('alert-class', 'alert-success') }}">{{Session::get('success') }}</p>
+                  
+                  @endif
+  
+                  @if(Session::has('goal'))
+  
+                  <p class="alert
+                  {{ Session::get('alert-class', 'alert-success') }}">{{Session::get('goal') }}</p>
+                  
+                  @endif
         </div>
       </div>
-    </div>
     <!-- success  -->
 
     <!-- content  -->
@@ -75,17 +71,17 @@
               <label>Event Name</label>
               <input type="text" name="Evname"  class="form-control" required/>
             </div>
-            
+
             <div class="form-group">
-              <label>Trainer</label>
-              <input type="text" name="Evtrainer"  class="form-control" >
+              <label>Event Description</label>
+              <textarea type="text" name="Evdescription"  class="form-control" required ></textarea>
             </div>
             
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <div class="form-group">
-                  <label>Event Description</label>
-                  <textarea type="text" name="Evdescription"  class="form-control" required ></textarea>
+                  <label>Trainer</label>
+                  <input type="text" name="Evtrainer"  class="form-control" >
                 </div>
               </div>
 
@@ -182,4 +178,9 @@
   </div>
 </div>
 <br><br>
+<script>
+  $(document).ready(function(){
+      $('.alert-success').fadeIn().delay(2000).fadeOut();
+        });
+  </script>
 @endsection

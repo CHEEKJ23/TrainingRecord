@@ -4,22 +4,20 @@
   <div class="container" style="background-color: #fff; margin-top:5%; border-radius:15px;">
     <div class="row">
       <div class="col-md-12">
+        
         @if(Session::has('success'))
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <p>employee added</p>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-        @endif
-        @if(Session::has('error'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <p>Cannot delete this employee because it is associated with events.</p>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
+
+                <p class="alert
+                {{ Session::get('alert-class', 'alert-success') }}">{{Session::get('success') }}</p>
+                
+                @endif
+
+                @if(Session::has('goal'))
+
+                <p class="alert
+                {{ Session::get('alert-class', 'alert-success') }}">{{Session::get('goal') }}</p>
+                
+                @endif
       </div>
     </div>
     <div class="row">
@@ -194,5 +192,10 @@
 </div>
 <br>
 <br>
+<script>
+  $(document).ready(function(){
+      $('.alert-success').fadeIn().delay(2000).fadeOut();
+        });
+  </script>
 @endsection
 

@@ -90,5 +90,7 @@ public function deleteEmployeeFromEvent($employeeId, $eventId) {
     } else {
         return back()->with('error', 'Employee not found');
     }
+    Session::flash('success',"Employee deleted from the event");
+
 }
 }

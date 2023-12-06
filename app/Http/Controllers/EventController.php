@@ -56,7 +56,9 @@ class EventController extends Controller
             'eveFile' => 'uploads/' . $fileName, 
         ]);
 
-        return redirect()->route('eventList')->with('success', 'Event added successfully');
+        Session::flash('success',"New Event Added");
+
+        return redirect()->route('eventList');
     }
 
     return redirect()->back()->with('error', 'No file selected for upload.');

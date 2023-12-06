@@ -57,8 +57,10 @@ class EmployeeController extends Controller
             'empFile' => 'uploads/' . $fileName, 
             'contactNumber' => $request->input('EmpcontactNo'),
         ]);
+        Session::flash('success',"New Employee Added");
 
-        return redirect()->route('employeeList')->with('success', 'Employee added successfully');
+        return redirect()->route('employeeList');
+
     }
 
     return redirect()->back()->with('error', 'No file selected for upload.');
