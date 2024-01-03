@@ -43,11 +43,11 @@
         <form method="POST" action="{{ route('associateEmployeesToEvents') }}">
             @csrf
             <div class="col-md-12">
-                <h3>Select Employee(s):</h3>
+                <h4>Select Employee(s):</h4>
                 @if(count($employees))
                     @foreach ($employees as $employee)
                         <input type="checkbox" name="employee_ids[]" value="{{ $employee->id }}" >
-                        {{ $employee->name }}
+                       <label for="">{{ $employee->name }}</label> 
                     @endforeach
                 @else
                     <p>No employee yet.</p>
@@ -55,7 +55,7 @@
             </div>
             
             <div class="col-md-12">
-                <h3>Select Event(s):</h3>
+                <h4>Select Event(s):</h4>
                 @if(count($trainingEvents))
                     @foreach ($trainingEvents as $trainingEvent)
                         <input type="checkbox" name="event_ids[]" value="{{ $trainingEvent->id }}" >
@@ -73,4 +73,28 @@
         </form>
     </div>
 </div>
+
+<style>
+h2 {
+    color: #007bff;
+}
+
+h4 {
+    margin-top: 20px;
+}
+
+input[type="checkbox"] {
+    margin: 5px;
+}
+
+form label  {
+    font-size: 20px; 
+}
+
+button {
+    margin-top: 20px;
+}
+
+</style>
+
 @endsection

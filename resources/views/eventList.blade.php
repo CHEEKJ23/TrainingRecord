@@ -110,8 +110,8 @@
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
-              <button type="submit" class="btn btn-success" href="" >Save</button>
+              <button type="button" class="btn btn-light" data-dismiss="modal" >Close</button>
+              <button type="submit" class="btn btn-secondary" href="" >Save</button>
             </div>
           </div>
         </form>
@@ -154,12 +154,13 @@
                     </td> --}}
       
                     <td>
-                      <a class="btn" href="{{route('deleteEvent',['id'=>$event->id])}}" onClick="return confirm('Are you sure you want to delete this user?')"><i class="fa fa-trash"></i> Delete</a>
-                      <a class="btn" 
+                      <a class="btn action-text del-btn" href="{{route('deleteEvent',['id'=>$event->id])}}" onClick="return confirm('Are you sure you want to delete this user?')"><i class="fa fa-trash"></i> Delete</a>
+
+                      <a class="btn action-text view-btn" 
                       href="{{route('showEventDetails',['id'=>$event->id])}}"
-                      >
-                      <i class="fa fa-folder"></i> View Details</a>
-                      <a class="btn" href="{{route('editEventInfo',['id'=>$event->id])}}"><i class="fa fa-edit"></i> Edit</a>
+                      ><i class="fa fa-folder"></i> View</a>
+
+                      <a class="btn action-text edit-btn" href="{{route('editEventInfo',['id'=>$event->id])}}"><i class="fa fa-edit"></i> Edit</a>
                     </td>
                 </tr>
               @endforeach
@@ -178,9 +179,47 @@
   </div>
 </div>
 <br><br>
+
 <script>
   $(document).ready(function(){
       $('.alert-success').fadeIn().delay(2000).fadeOut();
         });
   </script>
 @endsection
+
+<style>
+.btn.btn-secondary {
+    background-color: #6c757d; 
+    border-color: #6c757d; 
+    color: #fff; 
+    height: 40px;
+}
+
+.btn.btn-secondary:hover {
+    background-color: #495057;
+    border-color: #495057; 
+    color: #fff; 
+}
+
+.btn.action-text {
+    color: #333; 
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn.action-text.del-btn:hover {
+    background-color: #d9534f; 
+    color: #fff; 
+}
+
+.btn.action-text.view-btn:hover {
+    background-color: #5bc0de; 
+    color: #fff; 
+}
+
+.btn.action-text.edit-btn:hover {
+    background-color: #5cb85c; 
+    color: #fff; 
+}
+</style>

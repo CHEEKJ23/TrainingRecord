@@ -151,24 +151,16 @@
               <td>{{$employee->position}}</td>
               <td>{{$employee->department}}</td>
               <td>{{$employee->contactNumber}}</td>
-              <!-- {{-- <td>
-                  @if ($employee->empFile)
-                    <a class="btn btn-success" href="{{ asset($employee->empFile) }}" target="_blank">{{ $employee->empFile }}</a> |
-                    <a class="btn btn-success" href="{{ asset($employee->empFile) }}" download>Download File</a>
-                  @else
-                    No File Available
-                  @endif
-              </td> --}} -->
 
               <td>
-                <a class="btn" href="{{route('deleteEmployee',['id'=>$employee->id])}}" onClick="return confirm('Are you sure you want to delete this user?')"><i class="fa fa-trash"></i> 
+                <a class="btn action-text del-btn" href="{{route('deleteEmployee',['id'=>$employee->id])}}" onClick="return confirm('Are you sure you want to delete this user?')"><i class="fa fa-trash"></i> 
                   Delete
                 </a>
-                <a class="btn"href="{{route('showEmployeeDetails',['id'=>$employee->id])}}">
+                <a class="btn action-text view-btn"href="{{route('showEmployeeDetails',['id'=>$employee->id])}}">
                 <i class="fa fa-folder"></i> 
                   View Record
                 </a>
-                <a class="btn" href="{{route('editEmployeeInfo',['id'=>$employee->id])}}"><i class="fa fa-edit"></i> Edit</a>
+                <a class="btn action-text edit-btn" href="{{route('editEmployeeInfo',['id'=>$employee->id])}}"><i class="fa fa-edit"></i> Edit</a>
               </td>
             </tr>
             @endforeach
@@ -192,10 +184,50 @@
 </div>
 <br>
 <br>
+
 <script>
   $(document).ready(function(){
       $('.alert-success').fadeIn().delay(2000).fadeOut();
         });
-  </script>
+</script>
+
+<style>
+  .btn.btn-secondary {
+    background-color: #6c757d; 
+    border-color: #6c757d; 
+    color: #fff; 
+    height: 40px;
+}
+
+.btn.btn-secondary:hover {
+    background-color: #495057;
+    border-color: #495057; 
+    color: #fff; 
+}
+
+
+.btn.action-text {
+    color: #333; 
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn.action-text.del-btn:hover {
+    background-color: #d9534f; 
+    color: #fff; 
+}
+
+.btn.action-text.view-btn:hover {
+    background-color: #5bc0de; 
+    color: #fff; 
+}
+
+.btn.action-text.edit-btn:hover {
+    background-color: #5cb85c; 
+    color: #fff; 
+}
+</style>
+
 @endsection
 
